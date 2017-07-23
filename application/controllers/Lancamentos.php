@@ -1,4 +1,5 @@
 <?php
+/*Somente um comentário */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Lancamentos extends CI_Controller {
