@@ -8,27 +8,28 @@
 		</div> <!-- Fim DIV Botôes-->
 		<div class="container lancamento-comum">
 			<h1>Lançamento Comum</h1>
-			<form action="<?php echo base_url();?>lancamentos/salvar_comum" method="POST">
+			<form action="<?php echo base_url("lancamentos/salvar_comum");?>" method="POST">
 				<div class="form-group row">
 					<input type="hidden" name="tipolancamento" value="comum">
 					<div class="col-xs-2">
 				    	<label for="data">Data Recebimento:</label>
-				    	<input class="form-control" id="data" name="datadaficha" type="text">
+				    	<input class="form-control" id="data" name="datadaficha" type="text" required>
 					</div>
 					<div class="col-xs-4">
 				    	<label for="nome">Nome do Paciente:</label>
-				    	<input class="form-control" id="nome" name="nomepac" type="text">
+				    	<input class="form-control" id="nome" name="nomepac" type="text" required>
 					</div>
 					<div class="col-xs-2">
 				    	<label for="valor">Valor Recebido:</label>
 						<div class="input-group">
 				    		<span class="input-group-addon">R$</span>
-				    		<input class="form-control" id="valor" name="valor" type="text">
+				    		<input class="form-control" id="valor" name="valor" type="text" required>
 				    	</div>
 					</div>
 					<div class="col-xs-2">
 				    	<label for="forma">Forma Pag.:</label>
-				    	<select class="form-control" id="forma" name="forma">
+				    	<select class="form-control" id="forma" name="forma" required>
+				    		<option value="">Selecione</option>
 							<option value="Dinheiro">Dinheiro</option>
 							<option value="Cheque">Cheque</option>
 							<option value="C.Crédito">C. Crédito</option>
@@ -38,7 +39,7 @@
 					<div class="col-xs-2">
 				    	<label for="taxa">Taxa Cartão:</label>
 				    	<div class="input-group">
-				    		<input class="form-control" id="taxa" name="taxacartao" type="text">
+				    		<input class="form-control" id="taxa" name="taxacartao" type="text" required>
 				    		<span class="input-group-addon">%</span>
 				    	</div>
 					</div>					
@@ -47,13 +48,13 @@
 					<div class="col-xs-2">
 				    	<label for="comissao">Taxa Comissão:</label>
 				    	<div class="input-group">
-				    		<input class="form-control" id="comissao" name="taxacomissao" type="text">
+				    		<input class="form-control" id="comissao" name="taxacomissao" type="text" required>
 				    		<span class="input-group-addon">%</span>
 				    	</div>
 					</div>
 					<div class="col-xs-3">
 				    	<label for="quem">Quem lançou:</label>
-				    	<input class="form-control" id="quem" name="quemlancou" type="text">
+				    	<input class="form-control" id="quem" name="quemlancou" type="text" required>
 					</div>
 					<div class="col-xs-3">
 				    	<span id="mutreta"></span>
@@ -64,30 +65,30 @@
 			</form>
 		</div> <!-- Fim DIV Lançamento Comum-->
 		<div class="container lancamento-credito">
-			<h1>Lançamento - Crédito</h1>
-			<form action="<?php echo base_url();?>lancamentos/salvar_creditos" method="POST">
+			<h1>Crédito Integral para o Dentista</h1>
+			<form action="<?php echo base_url("lancamentos/salvar_creditos");?>" method="POST">
 				<div class="form-group row">
 					<input type="hidden" name="tipolancamento" value="credito">
 					<div class="col-xs-2">
 				    	<label for="datacredito">Data do Crédito:</label>
-				    	<input class="form-control" id="datacredito" name="datacredito" type="text">
+				    	<input class="form-control" id="datacredito" name="datacredito" type="text" required>
 					</div>
 					<div class="col-xs-4">
 				    	<label for="observacoescredito">Observações sobre o Crédito:</label>
-				    	<input class="form-control" id="observacoescredito" name="observacoescredito" type="text">
+				    	<input class="form-control" id="observacoescredito" name="observacoescredito" type="text" required>
 					</div>
 					<div class="col-xs-2">
 				    	<label for="valorcredito">Valor:</label>
 				    	<div class="input-group">
 				    		<span class="input-group-addon">R$</span>
-				    		<input class="form-control" id="valorcredito" name="valorcredito" type="text">
+				    		<input class="form-control" id="valorcredito" name="valorcredito" type="text" required>
 				    	</div>
 					</div>					
 				</div> <!-- Fim DIV Form-Group Row 1 -->
 				<div class="form-group row">
 					<div class="col-xs-3">
 				    	<label for="quemlancoucredito">Quem lançou:</label>
-				    	<input class="form-control" id="quemlancoucredito" name="quemlancoucredito" type="text">
+				    	<input class="form-control" id="quemlancoucredito" name="quemlancoucredito" type="text" required>
 					</div>
 					<div class="col-xs-2">
 				    	<span id="mutreta"></span>
@@ -228,7 +229,7 @@
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Lançamentos Comuns -->
 		<div class="container tabela">
-			<h1>Créditos</h1>
+			<h1>Créditos Integrais para o Dentista</h1>
 			<div class="panel panel-default">
 				<table class="table table-bordered">
 	    			<thead>
@@ -241,7 +242,7 @@
 	      				</tr>
 	    			</thead>
 	    			<tbody>
-	    			{BLOCO_CREDITOS}
+	    				{BLOCO_CREDITOS}    			
 	      				<tr>
 	        				<td>{datadafichacredito}</td>
 	        				<td>{observacoescredito}</td>
@@ -249,18 +250,18 @@
 	        				<td><a href="{URLEDITARCREDITO}" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
 	        				<td><a href="{URLDELETARCREDITO}" title="Deletar"><span class="glyphicon glyphicon-trash"></span></a></td>
 	      				</tr>
-	      			{/BLOCO_CREDITOS}
-	      			{BLOCO_SEMCREDITOS}
+	      				{/BLOCO_CREDITOS}
+	      				{BLOCO_SEMCREDITOS}
 	      				<tr>
-	        				<td colspan="5">Nenhum Crédito no Momento.</td>
+	      					<td colspan="5">Sem créditos para o Dentista no momento.</td>
 	      				</tr>
-	    			{/BLOCO_SEMCREDITOS}
+	      				{/BLOCO_SEMCREDITOS}
 	      			</tbody>
 	  			</table> <!-- Fim da Tabela Lançamentos Comuns -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Creditos -->
 		<div class="container tabela">
-			<h1>Saídas Antecipadas Dentista</h1>
+			<h1>Saídas Antecipadas ao Dentista</h1>
 			<div class="panel panel-default">
 				<table class="table table-bordered">
 	    			<thead>
@@ -273,7 +274,7 @@
 	      				</tr>
 	    			</thead>
 	    			<tbody>
-	    			{BLOCO_DEBITOS}
+	    				{BLOCO_DEBITOS}
 	      				<tr>
 	        				<td>{datadafichadebito}</td>
 	        				<td>{observacoesdebito}</td>
@@ -281,18 +282,18 @@
 	        				<td><a href="{URLEDITARDEBITO}" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
 	        				<td><a href="{URLDELETARDEBITO}" title="Deletar"><span class="glyphicon glyphicon-trash"></span></a></td>
 	      				</tr>
-	      			{/BLOCO_DEBITOS}
-	      			{BLOCO_SEMDEBITOS}
+	      				{/BLOCO_DEBITOS}
+	      				{BLOCO_SEMDEBITOS}
 	      				<tr>
-	        				<td colspan="5">Nenhuma Saída no Momento.</td>
+	      					<td colspan="5">Sem saídas antecipadas.</td>
 	      				</tr>
-	    			{/BLOCO_SEMDEBITOS}
+	      				{/BLOCO_SEMDEBITOS}
 	      			</tbody>
 	  			</table> <!-- Fim da Tabela Lançamentos Comuns -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Debitos Dentista-->
 		<div class="container tabela">
-			<h1>Saídas Antecipadas Clínica</h1>
+			<h1>Saídas Antecipadas à Clínica</h1>
 			<div class="panel panel-default">
 				<table class="table table-bordered">
 	    			<thead>
@@ -305,7 +306,7 @@
 	      				</tr>
 	    			</thead>
 	    			<tbody>
-	    			{BLOCO_DEBITOSCLINICA}
+	    				{BLOCO_DEBITOSCLINICA}
 	      				<tr>
 	        				<td>{datadafichadebito}</td>
 	        				<td>{observacoesdebito}</td>
@@ -313,12 +314,12 @@
 	        				<td><a href="{URLEDITARDEBITO}" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a></td>
 	        				<td><a href="{URLDELETARDEBITO}" title="Deletar"><span class="glyphicon glyphicon-trash"></span></a></td>
 	      				</tr>
-	      			{/BLOCO_DEBITOSCLINICA}
-	      			{BLOCO_SEMDEBITOSCLINICA}
+	      				{/BLOCO_DEBITOSCLINICA}
+	      				{BLOCO_SEMDEBITOSCLINICA}
 	      				<tr>
-	        				<td colspan="5">Nenhuma Saída no Momento.</td>
+	      					<td colspan="5">Sem saídas antecipadas.</td>
 	      				</tr>
-	    			{/BLOCO_SEMDEBITOSCLINICA}
+	      				{/BLOCO_SEMDEBITOSCLINICA}
 	      			</tbody>
 	  			</table> <!-- Fim da Tabela Lançamentos Comuns -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
@@ -350,8 +351,8 @@
 	  			</table> <!-- Fim da Tabela Resumo -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Resumo -->
+		{BLOCO_FECHARCAIXA}
 		<div class="container acerto">
-			{BLOCO_FECHARCAIXA}
 			<button id="fazerAcerto" class="btn btn-info center-block">Fazer Acerto com Dentista</button>
 			<div class="container lancamento-acerto">
 			<h1 class="text-center">Acerto</h1>
@@ -421,18 +422,13 @@
 				</div> <!-- Fim DIV Form-Group Row 4 -->
 			</form>
 		</div> <!-- Fim DIV Acerto-->
-			{/BLOCO_FECHARCAIXA}
-			{BLOCO_SEMFECHARCAIXA}
+		{/BLOCO_FECHARCAIXA}
+		{BLOCO_SEMFECHARCAIXA}
+		<div class="container acerto">
 			<div id="alerta-liquidez">
 				<strong><h3 class="text-center">O caixa não pode ser fechado devido falta de liquidez. </h2></strong>
-				<h4 class="text-center">Os motivos podem ser:</h5>
-				<h5 class="text-center">1) Muito cheque e pouco dinheiro;</h5>
-				<h5 class="text-center">2) O Dentista está com muito <strong>Créditos a Receber</strong>, fazendo sua Comissão ser maior que o valor total em caixa. Repare se o <strong>Total p/ Clínica</strong> está negativo.</h5>
-				<h4 class="text-center">As opções possíveis são:</h5>
-				<h5 class="text-center">1) Trocar um dos cheques integralmente por dinheiro se for o problema número 1 (edite o lançamento pelo qual o cheque foi trocado por dinheiro); ou</h5>
-				<h5 class="text-center">2) Realizar um aporte em dinheiro. Isso resolverá os problemas número 1 e/ou 2. </h5>
-				<h5 class="text-center">Pelos cálculos do sistema, seria necessário adicionar ao caixa a quantia de R$ {VALORDARLIQUIDEZ}.</h5>
-				<h5 class="text-center">Caso você escolha a opção 2, poderá colocar qualquer valor (mas respeitando o valor mínimo indicado acima).Este valor aparecerá na tabela dos Lançamentos Comuns.</h5>
+				<h5 class="text-center">Pelos cálculos do sistema, seria necessário adicionar ao caixa a quantia de R$ {VALORDARLIQUIDEZ} em dinheiro.</h5>
+				<h5 class="text-center">Este valor aparecerá na tabela dos Lançamentos Comuns.</h5>
 				<br>
 				<button id="fazerLiquidez" class="btn btn-warning center-block">Clique para dar Liquidez ao Caixa adicionando Dinheiro</button>
 
@@ -456,7 +452,8 @@
 					</form>
 				</div>
 			</div>
-			{/BLOCO_SEMFECHARCAIXA}
-		</div> <!-- Fim DIV Botôes-->
+		</div>
+		{/BLOCO_SEMFECHARCAIXA}
+		</div>
 		<br>
 		<br>

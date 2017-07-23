@@ -55,7 +55,8 @@ class Template {
      }
 
      private function estilizaAlerta($mensagem, $tipo_do_alerta, $titulo_do_alerta){
-          $html = "<div class=\"alert {$tipo_do_alerta}\">\n";
+          $html = "<br>";
+          $html.= "<div class=\" container alert {$tipo_do_alerta}\">\n";
           $html.= "\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n";
           $html.= "\t<strong>{$titulo_do_alerta}</strong> {$mensagem}\n";
           $html.= "</div>";

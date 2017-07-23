@@ -1,3 +1,17 @@
+body{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#informacao-credito{
+	width: 250px;
+	height: 180px;
+	margin-right: 20px;
+	background-color: white;
+	float: right;
+	text-align: center;
+	display: inline-block;
+}
+
 .botoes{
 	margin-top: 50px;
 }

@@ -1,6 +1,5 @@
 <?php
-/*Somente um comentário */
-/*Mais um comentário */
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Lancamentos extends CI_Controller {
@@ -163,16 +162,15 @@ class Lancamentos extends CI_Controller {
 
 		$autorizacao_fechar_caixa = $this->milagre($totaldinheiro, $totalparaodentista);
 		
-
 		if($autorizacao_fechar_caixa["liberacao"]){
 			$data["BLOCO_FECHARCAIXA"][] = array(
 				"TOTALDENTISTA" => number_format($totalparaodentista, 2, ',', '.'),
 				"TOTALCLINICA"  => number_format($totalrealnocaixa-$totalparaodentista+$totaldebitos, 2, ',', '.')
 			);
 		} else {
-			$data["BLOCO_SEMFECHARCAIXA"][] = array(
+				$data["BLOCO_SEMFECHARCAIXA"][] = array(
 				"VALORDARLIQUIDEZ" => number_format($autorizacao_fechar_caixa["quanto_faltou"], 2, ',', '')
-			);
+				);	
 		}
 		
 		$this->parser->parse('lancamentos', $data);
@@ -1337,6 +1335,12 @@ class Lancamentos extends CI_Controller {
 	private function milagre($dinheirovivo, $comissao_dentista)
 	{
 		$resposta      = array();
+		$resposta["liberacao"] = TRUE;
+
+		if($dinheirovivo > $comissao_dentista){
+			return $resposta;
+		}
+
 		$closest     = null;
 		$closest_key = null;
 
@@ -1354,7 +1358,7 @@ class Lancamentos extends CI_Controller {
    		
 		
 		$somatorio     = null;
-		$quanto_faltou = null;
+		$quanto_faltou = $comissao_dentista-$dinheirovivo;
    
 		foreach ($array_de_cheques as $cheque) {
 
