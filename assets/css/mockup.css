@@ -1,0 +1,87 @@
+.botoes{
+	margin-top: 50px;
+}
+
+.lancamento-comum{
+	background-color: lightgrey;
+	margin-top: 50px;
+	border-radius: 10px;
+	display: none;
+}
+
+.lancamento-credito{
+	background-color: lightgreen;
+	margin-top: 50px;
+	border-radius: 10px;
+	display: none;
+}
+
+.lancamento-saida{
+	background-color: lightpink;
+	margin-top: 50px;
+	border-radius: 10px;
+	display: none;
+}
+
+.lancamento-saida-clinica{
+	background-color: lightpink;
+	margin-top: 50px;
+	border-radius: 10px;
+	display: none;
+}
+
+.lancamento-liquidez{
+	background-color: lightorange;
+	margin-top: 50px;
+	border-radius: 10px;
+	display: none;
+}
+
+.lancamento-acerto{
+	margin: 0 auto;
+	background-color: lightblue;
+	margin-top: 50px;
+	border-radius: 10px;
+	display: none;
+}
+
+#mutreta{
+	display: block;
+	height: 25px;
+}
+
+.tabela{
+	text-align: center;
+}
+
+.table thead tr th{
+	text-align: center;
+}
+
+.table td{
+	text-align: center;	
+}
+
+.btn-acerto{
+	text-decoration-color: green;
+}
+
+#alerta-liquidez{
+	background-color: lightgrey;
+	padding: 30px;
+	margin-top: 50px;
+	border-radius: 10px;
+}
+
+
+#campoLiquidez{
+	display: none;
+}
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
