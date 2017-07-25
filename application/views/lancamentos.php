@@ -381,6 +381,9 @@
 	  			</table> <!-- Fim da Tabela Resumo -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Resumo -->
+
+
+
 		{BLOCO_FECHARCAIXA}
 		<div class="container acerto">
 			<button id="fazerAcerto" class="btn btn-info center-block">Fazer Acerto com Dentista</button>
@@ -453,6 +456,9 @@
 			</form>
 		</div> <!-- Fim DIV Acerto-->
 		{/BLOCO_FECHARCAIXA}
+
+
+
 		{BLOCO_SEMFECHARCAIXA}
 		<div class="container acerto">
 			<div id="alerta-liquidez">
@@ -482,8 +488,10 @@
 					</form>
 				</div>
 			</div>
-		</div>
+		</div> <!-- Fim DIV Falta de Liquidez-->
 		{/BLOCO_SEMFECHARCAIXA}
-		</div>
+
+
+		
 		<br>
 		<br>
