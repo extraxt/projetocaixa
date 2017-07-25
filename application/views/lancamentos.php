@@ -6,6 +6,9 @@
 			<button class="btn btn-danger" id="botaoVermelho">Saída Antecipada Dentista</button>
 			<button class="btn btn-danger" id="botaoVermelhoClinica">Saída Antecipada Clínica</button>
 		</div> <!-- Fim DIV Botôes-->
+
+
+
 		<div class="container lancamento-comum">
 			<h1>Lançamento Comum</h1>
 			<form action="<?php echo base_url("lancamentos/salvar_comum");?>" method="POST">
@@ -39,7 +42,7 @@
 					<div class="col-xs-2">
 				    	<label for="taxa">Taxa Cartão:</label>
 				    	<div class="input-group">
-				    		<input class="form-control" id="taxa" name="taxacartao" type="text" required>
+				    		<input class="form-control" id="taxa" name="taxacartao" type="text">
 				    		<span class="input-group-addon">%</span>
 				    	</div>
 					</div>					
@@ -64,6 +67,7 @@
 				</div> <!-- Fim DIV Form-Group Row 2 -->
 			</form>
 		</div> <!-- Fim DIV Lançamento Comum-->
+
 		<div class="container lancamento-credito">
 			<h1>Crédito Integral para o Dentista</h1>
 			<form action="<?php echo base_url("lancamentos/salvar_creditos");?>" method="POST">
@@ -90,7 +94,7 @@
 				    	<label for="quemlancoucredito">Quem lançou:</label>
 				    	<input class="form-control" id="quemlancoucredito" name="quemlancoucredito" type="text" required>
 					</div>
-					<div class="col-xs-2">
+					<div class="col-xs-3">
 				    	<span id="mutreta"></span>
 				    	<input type="submit" class="btn btn-success" value="Lançar">
 				    	<input type="button" class="btn botaoFechar" value="Fechar">
@@ -98,6 +102,7 @@
 				</div> <!-- Fim DIV Form-Group Row 2 -->
 			</form>
 		</div> <!-- Fim DIV Lançamento Entrada-->
+
 		<div class="container lancamento-saida">
 			<h1>Lançamento - Saída Antecipada Dentista</h1>
 			<form action="<?php echo base_url();?>lancamentos/salvar_debitos" method="POST">
@@ -105,26 +110,26 @@
 					<input type="hidden" name="tipolancamento" value="debito">
 					<div class="col-xs-2">
 				    	<label for="datadebito">Data da Saída:</label>
-				    	<input class="form-control" id="datadebito" name="datadebito" type="text">
+				    	<input class="form-control" id="datadebito" name="datadebito" type="text" required>
 					</div>
 					<div class="col-xs-4">
 				    	<label for="observacoesdebito">Observações:</label>
-				    	<input class="form-control" id="observacoesdebito" name="observacoesdebito" type="text">
+				    	<input class="form-control" id="observacoesdebito" name="observacoesdebito" type="text" required>
 					</div>
 					<div class="col-xs-2">
 				    	<label for="valordebito">Valor:</label>
 				    	<div class="input-group">
 				    		<span class="input-group-addon">R$</span>
-				    		<input id="valordebito" class="form-control" name="valordebito" type="text">
+				    		<input id="valordebito" class="form-control" name="valordebito" type="text" required>
 				    	</div>
 					</div>					
 				</div> <!-- Fim DIV Form-Group Row 1 -->
 				<div class="form-group row">
 					<div class="col-xs-3">
 				    	<label for="quemlancoudebito">Quem lançou:</label>
-				    	<input class="form-control" id="quemlancoudebito" name="quemlancoudebito" type="text">
+				    	<input class="form-control" id="quemlancoudebito" name="quemlancoudebito" type="text" required>
 					</div>
-					<div class="col-xs-2">
+					<div class="col-xs-3">
 				    	<span id="mutreta"></span>
 				    	<input type="submit" class="btn btn-danger" value="Lançar">
 				    	<input type="button" class="btn botaoFechar" value="Fechar">
@@ -132,6 +137,7 @@
 				</div> <!-- Fim DIV Form-Group Row 2 -->
 			</form>
 		</div> <!-- Fim DIV Lançamento Saida-->
+
 		<div class="container lancamento-saida-clinica">
 			<h1>Lançamento - Saída Antecipada Clínica</h1>
 			<form action="<?php echo base_url();?>lancamentos/salvar_debitos_clinica" method="POST">
@@ -139,26 +145,26 @@
 					<input type="hidden" name="tipolancamento" value="debito">
 					<div class="col-xs-2">
 				    	<label for="datadebitoclinica">Data da Saída:</label>
-				    	<input class="form-control" id="datadebitoclinica" name="datadebito" type="text">
+				    	<input class="form-control" id="datadebitoclinica" name="datadebito" type="text" required>
 					</div>
 					<div class="col-xs-4">
 				    	<label for="observacoesdebito">Observações:</label>
-				    	<input class="form-control" id="observacoesdebito" name="observacoesdebito" type="text">
+				    	<input class="form-control" id="observacoesdebito" name="observacoesdebito" type="text" required>
 					</div>
 					<div class="col-xs-2">
 				    	<label for="valordebito">Valor:</label>
 				    	<div class="input-group">
 				    		<span class="input-group-addon">R$</span>
-				    		<input id="valordebitoclinica" class="form-control" name="valordebito" type="text">
+				    		<input id="valordebitoclinica" class="form-control" name="valordebito" type="text" required>
 				    	</div>
 					</div>					
 				</div> <!-- Fim DIV Form-Group Row 1 -->
 				<div class="form-group row">
 					<div class="col-xs-3">
 				    	<label for="quemlancoudebito">Quem lançou:</label>
-				    	<input class="form-control" id="quemlancoudebito" name="quemlancoudebito" type="text">
+				    	<input class="form-control" id="quemlancoudebito" name="quemlancoudebito" type="text" required>
 					</div>
-					<div class="col-xs-2">
+					<div class="col-xs-3">
 				    	<span id="mutreta"></span>
 				    	<input type="submit" class="btn btn-danger" value="Lançar">
 				    	<input type="button" class="btn botaoFechar" value="Fechar">
@@ -166,6 +172,9 @@
 				</div> <!-- Fim DIV Form-Group Row 2 -->
 			</form>
 		</div> <!-- Fim DIV Lançamento Saida Clínica-->
+
+
+
 		<br>
 		<div class="container tabela">
 			<h3>Saldo Anterior</h1>
@@ -188,6 +197,9 @@
 	  			</table> <!-- Fim da Tabela Saldos -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Saldos -->
+
+		<br><br>
+
 		<div class="container tabela">
 			<h1>Lançamentos Comuns</h1>
 			<div class="panel panel-default">
@@ -228,11 +240,16 @@
 	  			</table> <!-- Fim da Tabela Lançamentos Comuns -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Lançamentos Comuns -->
-		<div class="container tabela">
-			<h1>Créditos Integrais para o Dentista</h1>
+
+		<br><br>
+
+		<div class="container tabela">		
 			<div class="panel panel-default">
 				<table class="table table-bordered">
 	    			<thead>
+	    				<tr>
+	    					<th class="celula-fundo-cinza" colspan="5">Créditos Integrais para o Dentista</th>
+	    				</tr>
 	      				<tr>
 	        				<th>Data Crédito</th>
 	        				<th>Observações</th>
@@ -260,11 +277,16 @@
 	  			</table> <!-- Fim da Tabela Lançamentos Comuns -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Creditos -->
+
+		<br><br>
+
 		<div class="container tabela">
-			<h1>Saídas Antecipadas ao Dentista</h1>
 			<div class="panel panel-default">
 				<table class="table table-bordered">
 	    			<thead>
+	    				<tr>
+	    					<th class="celula-fundo-cinza" colspan="5">Saídas Antecipadas ao Dentista</th>
+	    				</tr>
 	      				<tr>
 	        				<th>Data Saída</th>
 	        				<th>Observações</th>
@@ -292,11 +314,16 @@
 	  			</table> <!-- Fim da Tabela Lançamentos Comuns -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Debitos Dentista-->
+
+		<br><br>
+
 		<div class="container tabela">
-			<h1>Saídas Antecipadas à Clínica</h1>
 			<div class="panel panel-default">
 				<table class="table table-bordered">
 	    			<thead>
+	    				<tr>
+	    					<th class="celula-fundo-cinza" colspan="5">Saídas Antecipadas à Clínica</th>
+	    				</tr>
 	      				<tr>
 	        				<th>Data Saída</th>
 	        				<th>Observações</th>
@@ -324,6 +351,9 @@
 	  			</table> <!-- Fim da Tabela Lançamentos Comuns -->
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Debitos Clinica-->
+
+		<br><br><br>
+
 		<div class="container tabela">
 			<h2>Resumo</h2>
 	  		<div class="panel panel-default">
