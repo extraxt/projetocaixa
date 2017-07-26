@@ -24,7 +24,6 @@ class Login extends CI_Controller {
 
 		$resultado = $this->LoginM->procurar_usuario($usuario, $senha);
 
-		print_r();
 
 		//VERIFICAÇÃO SE OS DADOS VIERAM
 		$erros    = FALSE;

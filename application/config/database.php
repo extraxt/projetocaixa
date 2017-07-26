@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'projetocaixa',
+	'hostname' => 'caixadrrafael.mysql.dbaas.com.br',
+	'username' => 'caixadrrafael',
+	'password' => 'odo3187odo',
+	'database' => 'caixadrrafael',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

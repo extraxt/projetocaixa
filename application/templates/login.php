@@ -6,7 +6,7 @@
 		<meta charset="utf-8"/>
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<link href="<?php echo base_url();?>assets/css/mockup.css" rel="stylesheet" type="text/css">
+		<link href="<?php echo base_url();?>assets/css/estilo.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		{MSG_ERRO}
@@ -21,7 +21,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/mascara.js"></script>
-	<script src="<?php echo base_url();?>assets/js/mockup.js"></script>
+	<script src="<?php echo base_url();?>assets/js/projetocaixa.js"></script>
 	<script src="<?php echo base_url();?>assets/js/data.js"></script>
 	</body>
 </html>
