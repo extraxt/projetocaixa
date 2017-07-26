@@ -1,4 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+		<nav>
+  			<div class="container barra-superior">
+  				<a href="<?php echo base_url();?>login/deslogar"><p>LOGOFF / SAIR ({nomeusuario})</p></a>
+  			</div>
+		</nav>
+
+
 
 		<div class="container botoes">
 			<button class="btn" id="botaoCinza">Lançamento Comum</button>
@@ -51,7 +58,7 @@
 					<div class="col-xs-2">
 				    	<label for="comissao">Taxa Comissão:</label>
 				    	<div class="input-group">
-				    		<input class="form-control" id="comissao" name="taxacomissao" type="text" required>
+				    		<input class="form-control" id="comissao" name="taxacomissao" type="text">
 				    		<span class="input-group-addon">%</span>
 				    	</div>
 					</div>
@@ -278,7 +285,7 @@
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Creditos -->
 
-		<br><br>
+		<br>
 
 		<div class="container tabela">
 			<div class="panel panel-default">
@@ -315,7 +322,7 @@
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Container Debitos Dentista-->
 
-		<br><br>
+		<br>
 
 		<div class="container tabela">
 			<div class="panel panel-default">
@@ -382,7 +389,7 @@
 	  		</div> <!-- Fim da DIV que engloba a tabela para arredondar as bordas -->
 		</div> <!-- Fim DIV Resumo -->
 
-
+		<br><br>
 
 		{BLOCO_FECHARCAIXA}
 		<div class="container acerto">
@@ -491,7 +498,8 @@
 		</div> <!-- Fim DIV Falta de Liquidez-->
 		{/BLOCO_SEMFECHARCAIXA}
 
-
+		{BLOCO_FECHARCAIXAVAZIO}
+		{/BLOCO_FECHARCAIXAVAZIO}
 		
 		<br>
 		<br>

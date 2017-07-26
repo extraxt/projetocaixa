@@ -14,8 +14,14 @@ class Lancamentos extends CI_Controller {
 	{
 		$this->layout="dashboard";
 
+		$logado = $this->usuario_esta_logado();
+		if(!$logado){
+			redirect(login);
+		}
+
+
 		$data=array(
-			"LANCAR-COMUM"                 => "lancamentos/salvar_comum",
+			"nomeusuario"                  => $this->session->userdata("nomeusuario"),
 			"BLOCO_SALDOS"                 => array(),
 			"BLOCO_DADOSCOMUNS"            => array(),
 			"BLOCO_SEMDADOSCOMUNS"         => array(),
@@ -26,7 +32,8 @@ class Lancamentos extends CI_Controller {
 			"BLOCO_DEBITOSCLINICA"         => array(),
 			"BLOCO_SEMDEBITOSCLINICA"      => array(),
 			"BLOCO_FECHARCAIXA"            => array(),
-			"BLOCO_SEMFECHARCAIXA"         => array()
+			"BLOCO_SEMFECHARCAIXA"         => array(),
+			"BLOCO_FECHARCAIXAVAZIO"       => array()
 		);
 
 		$respostasaldos         = $this->LancamentosM->pegarsaldos();
@@ -46,7 +53,7 @@ class Lancamentos extends CI_Controller {
 		$totalparaaclinica   = 0;
 		$totalcreditos       = 0;
 		$totaldebitos        = 0;
-
+		$totaldebitosclinica = 0;
 
 		if($respostasaldos){
 			foreach($respostasaldos as $r){
@@ -142,16 +149,16 @@ class Lancamentos extends CI_Controller {
 					"valordebito"        => "R$ ".str_replace(".", ",", $r->valor),
 				);
 
-				$totaldebitos += $r->valor;
+				$totaldebitosclinica += $r->valor;
 			}
 			
 		} else {
 			$data["BLOCO_SEMDEBITOSCLINICA"][] = array();
 		}
 
-		$totalrealnocaixa      = $totaldinheirovivo+$totaldinheirocheque+$totaldebitos;
+		$totalrealnocaixa      = $totaldinheirovivo+$totaldinheirocheque+$totaldebitos+$totaldebitosclinica;
 		$totalparaodentista    = ($totalparaodentistavl+$totaldebitos+$totalcreditos)+$saldodentista;
-		$totaldinheiro         = $totaldinheirovivo+$totaldebitos;
+		$totaldinheiro         = $totaldinheirovivo+$totaldebitos+$totaldebitosclinica;
 		$totalclinica          = ($totalrealnocaixa-$totalparaodentista)+$saldoclinica;
 		$data["TOTALDINHEIRO"] = "R$ ".number_format($totaldinheiro, 2, ',', '');
 		$data["TOTALCARTAO"]   = "R$ ".number_format($totaldinheirocartao, 2, ',', '');
@@ -162,16 +169,20 @@ class Lancamentos extends CI_Controller {
 
 		$autorizacao_fechar_caixa = $this->milagre($totaldinheiro, $totalparaodentista);
 		
-		if($autorizacao_fechar_caixa["liberacao"]){
-			$data["BLOCO_FECHARCAIXA"][] = array(
-				"TOTALDENTISTA" => number_format($totalparaodentista, 2, ',', '.'),
-				"TOTALCLINICA"  => number_format($totalrealnocaixa-$totalparaodentista+$totaldebitos, 2, ',', '.')
-			);
-		} else {
-				$data["BLOCO_SEMFECHARCAIXA"][] = array(
-				"VALORDARLIQUIDEZ" => number_format($autorizacao_fechar_caixa["quanto_faltou"], 2, ',', '')
-				);	
+		if(!($totalparaodentista <= 0)){
+			if($autorizacao_fechar_caixa["liberacao"]){
+					$data["BLOCO_FECHARCAIXA"][] = array(
+						"TOTALDENTISTA" => number_format($totalparaodentista, 2, ',', '.'),
+						"TOTALCLINICA"  => number_format($totalclinica, 2, ',', '.')
+					);
+			} else {
+					$data["BLOCO_SEMFECHARCAIXA"][] = array(
+					"VALORDARLIQUIDEZ" => number_format($autorizacao_fechar_caixa["quanto_faltou"], 2, ',', '')
+					);	
+			}
 		}
+
+		
 		
 		$this->parser->parse('lancamentos', $data);
 	}
@@ -221,10 +232,10 @@ class Lancamentos extends CI_Controller {
 			$mensagem .= "Informe a forma de pagamento\n";
 		}
 
-		if(!$taxacomissao){
+		/* if(!$taxacomissao){
 			$erros = TRUE;
 			$mensagem .= "Informe a taxa de comissão\n";
-		}
+		} */ 
 		if(!$quemlancou){
 			$erros = TRUE;
 			$mensagem .= "Informe quem fez este lançamento\n";
@@ -1337,7 +1348,11 @@ class Lancamentos extends CI_Controller {
 		$resposta      = array();
 		$resposta["liberacao"] = TRUE;
 
-		if($dinheirovivo > $comissao_dentista){
+		if($dinheirovivo < 0 OR $comissao_dentista < 0){
+			RETURN $resposta["liberacao"] = FALSE;
+		}
+
+		if($dinheirovivo >= $comissao_dentista){
 			return $resposta;
 		}
 
@@ -1376,5 +1391,13 @@ class Lancamentos extends CI_Controller {
    		$resposta["liberacao"]      = FALSE;
    		$resposta["quanto_faltou"] = $quanto_faltou; 
    		return $resposta;
+	}
+
+	private function usuario_esta_logado(){
+		if($this->session->userdata("id")){
+			return TRUE;
+		} else {
+			return FALSE;
+		}
 	}
 }

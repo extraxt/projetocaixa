@@ -2,6 +2,15 @@ body{
 	font-family: 'Ubuntu', sans-serif;
 }
 
+.barra-superior{
+	margin-top: 5px;
+	font-size: 15px;
+	text-align: right;
+}
+
+.caixa-login{
+	margin-top: 100px;
+}
 
 .celula-fundo-cinza{
 	background-color: lightgrey;
@@ -19,7 +28,7 @@ body{
 }
 
 .botoes{
-	margin-top: 50px;
+	margin-top: 10px;
 }
 
 .lancamento-comum{
