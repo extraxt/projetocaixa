@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Caixa Dr. Rafael</title>
+		<title>Caixa Dr. Rafael - Login</title>
 		<link rel="icon" href="<?php echo base_url();?>assets/imgs/kodingen.png">
 		<meta charset="utf-8"/>
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">

@@ -3,8 +3,11 @@
 class Template {
 
      public function init() {
+          
           $CI = &get_instance();
           $output = $CI->output->get_output();
+          $erroDashboard = null;
+          $sucessoDashboard = null;
 
           if (isset($CI->layout)) {
                if ($CI->layout) {
@@ -13,7 +16,16 @@ class Template {
                     if($CI->layout == "dashboard"){
                          $erroDashboard    = $CI->session->flashdata("erro");
                          $sucessoDashboard = $CI->session->flashdata("sucesso");
-                    } /// FIM PARTE 1
+                    }
+                    if($CI->layout == "login"){
+                         $erroDashboard    = $CI->session->flashdata("erro");
+                         $sucessoDashboard = $CI->session->flashdata("sucesso");
+                    }
+                    if($CI->layout == "lancamentos_dashboard"){
+                         $erroDashboard    = $CI->session->flashdata("erro");
+                         $sucessoDashboard = $CI->session->flashdata("sucesso");
+                    }
+                    /// FIM PARTE 1
 
 
                     if (!preg_match('/(.+).php$/', $CI->layout)) {
@@ -55,7 +67,8 @@ class Template {
      }
 
      private function estilizaAlerta($mensagem, $tipo_do_alerta, $titulo_do_alerta){
-          $html = "<div class=\"alert {$tipo_do_alerta}\">\n";
+          $html = "<br>";
+          $html.= "<div class=\" container alert {$tipo_do_alerta}\">\n";
           $html.= "\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n";
           $html.= "\t<strong>{$titulo_do_alerta}</strong> {$mensagem}\n";
           $html.= "</div>";
